@@ -1,0 +1,64 @@
+
+<!-- saved from url=(0062)http://labs.skookum.com/demos/barcampclt_physics/newton/0.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>Simple Game Physics</title>
+
+  <link rel="stylesheet" href="http://labs.skookum.com/demos/barcampclt_physics/style.css">
+  <style type="text/css" media="screen">
+	  /* <![CDATA[ */
+	  canvas{display:block; clear:both; float:none !important;}
+	  
+	  /* ]]> */
+  </style>
+</head>
+<body>
+  <ul id="menu">
+    <li><a href="http://labs.skookum.com/demos/barcampclt_physics/index.html">Index</a></li>
+    <li><a href="http://labs.skookum.com/demos/barcampclt_physics/newton/1.html">Next</a></li>
+  </ul>
+  <canvas id="surface" width="600" height="400"></canvas>
+  <pre><code id="source">
+    var ball = {
+      x: 300,
+      y: 200,
+      r: 15
+    };
+  </code></pre>
+  <img src="image7.jpg" alt="cat" id="room"/>
+  <script type="text/javascript">      // Version 0: Position      
+var eImg = document.getElementById("room");	  
+var ball = {      x: 300,      y: 200,      r: 15    };        
+var canvas = document.getElementById("surface");
+var ctx = canvas.getContext('2d');
+var counter = 1;
+setInterval(function() {           
+			// Clear display    
+			//console.log("najam");
+			ctx.save();
+			ctx.fillStyle = "rgba(0, 0, 0, .2)";
+			ctx.strokeStyle = "#f00";
+			ctx.lineWidth = 14;
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			ctx.strokeRect(0, 0, canvas.width, canvas.height);
+			ctx.clearRect(50, 0, canvas.width/2, canvas.height );
+			//ctx.restore();
+			
+			ctx.save();
+			//ctx.drawImage(eImg, 0,0, 300, 300);
+			ctx.drawImage(eImg, 100, 100, 200, 200, 0, 0,380, 328);
+			//counter++;
+			ctx.restore();
+
+			// Draw ball     
+			ctx.save();
+			ctx.translate(ball.x, ball.y);
+			ctx.fillStyle = "#fff";
+			ctx.beginPath();
+			ctx.arc(0, 0, ball.r, 0, Math.PI * 2, true);
+			ctx.closePath();
+			ctx.fill();
+			ctx.restore();
+			}, 1000 / 77);
+		</script>
+
+</body></html>

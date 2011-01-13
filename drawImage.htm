@@ -1,0 +1,73 @@
+
+<!-- saved from url=(0062)http://labs.skookum.com/demos/barcampclt_physics/newton/0.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>Simple Game Physics</title>
+
+  <link rel="stylesheet" href="http://labs.skookum.com/demos/barcampclt_physics/style.css">
+  <style type="text/css" media="screen">
+	  /* <![CDATA[ */
+	  canvas{display:block; clear:both; float:none !important;}
+	  
+	  /* ]]> */
+  </style>
+</head>
+<body>
+  <ul id="menu">
+    <li><a href="http://labs.skookum.com/demos/barcampclt_physics/index.html">Index</a></li>
+    <li><a href="http://labs.skookum.com/demos/barcampclt_physics/newton/1.html">Next</a></li>
+  </ul>
+  <canvas id="surface" width="600" height="400"></canvas>
+  <pre><code id="source">
+    var ball = {
+      x: 300,
+      y: 200,
+      r: 15
+    };
+  </code></pre>
+  <img src="image7.jpg" alt="cat" id="room"/>
+  <script type="text/javascript">       
+
+window.addEventListener('load', function () {
+  // Get the canvas element.
+  var elem = document.getElementById('surface');
+  if (!elem || !elem.getContext) {
+    return;
+  }
+ 
+  // Get the canvas 2d context.
+  var context = elem.getContext('2d');
+  if (!context || !context.putImageData) {
+    return;
+  }
+ 
+  var imgd = false,
+      w = 50, h = 50,
+      x = 0,  y = 0;
+ 
+  // Not all browsers implement createImageData. On such browsers we obtain the 
+  // ImageData object using the getImageData method. The worst-case scenario is 
+  // to create an object *similar* to the ImageData object and hope for the best 
+  // luck.
+  if (context.createImageData) {
+    imgd = context.createImageData(w, h);
+  } else if (context.getImageData) {
+    imgd = context.getImageData(0, 0, w, h);
+  } else {
+    imgd = {'width' : w, 'height' : h, 'data' : new Array(w*h*4)};
+  }
+  var pix = imgd.data;
+ 
+  // Loop over each pixel.
+  for (var i = 0, n = pix.length; i < n; i += 4) {
+    pix[i  ] = 255; // the red channel
+    pix[i+3] = 127; // the alpha channel
+  }
+ 
+  // Draw the ImageData object.
+  context.putImageData(imgd, x, y);
+}, false);
+
+
+</script>
+
+</body></html>
