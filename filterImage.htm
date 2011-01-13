@@ -18,13 +18,7 @@
 </ul>
 <img src="image7.jpg" alt="test"/>
   <canvas id="surface" width="600" height="400"></canvas>
-  <pre><code id="source">
-    var ball = {
-      x: 300,
-      y: 200,
-      r: 15
-    };
-  </code></pre>
+ 
 <script type="text/javascript">       
 window.addEventListener('load', function () {
   // Get the canvas element.
@@ -40,7 +34,6 @@ window.addEventListener('load', function () {
  
   // Once it's loaded draw the image on canvas and invert the colors.
   img.addEventListener('load', function () {
-	alert("oye");
     var x = 0, y = 0;
  
     // Draw the image on canvas.
@@ -61,7 +54,7 @@ window.addEventListener('load', function () {
     context.putImageData(imgd, x, y);
   }, false);
  
-  img.src = 'opera.gif';
+  img.src = 'image7.jpg';
 
 }, false);
 
